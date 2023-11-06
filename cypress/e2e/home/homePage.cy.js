@@ -18,11 +18,16 @@ describe('Home page UI and functionality', () => {
             .and('have.text', homeData.linkPageName[0])
     })
 
-    it('Click on Elements link and verify that it redirects to Elements page', () => {
+    it('TC_01.01.02 | Click on Elements link and verify that it redirects to Elements page', () => {
         homePage.clickElements();
 
         cy.url().should('be.eq', 'https://demoqa.com/elements');
-        elementsPage.getMainHeader().should('have.text', elementsData.mainHeader)
+        elementsPage.getMainHeader().should('have.text', elementsData.mainHeader);
+    })
 
+    it('TC_01.01.03 | Elements Icon has color rgb(1, 160, 224) and background-color rgb(238, 238, 238)', () => {
+        homePage.getElementsIcon()
+            .should('have.css', 'color', homeData.iconColor)
+            .and('have.css', 'background-color', homeData.iconBackgroundColor);
     })
 });

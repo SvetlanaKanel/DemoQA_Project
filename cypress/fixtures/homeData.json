@@ -6,5 +6,7 @@
         "Widgets", 
         "Interactions",
         "Book Store Application"
-    ]
+    ],
+    "iconColor" : "rgb(1, 160, 224)",
+    "iconBackgroundColor" : "rgb(238, 238, 238)"
 }
