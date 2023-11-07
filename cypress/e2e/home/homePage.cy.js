@@ -30,4 +30,14 @@ describe('Home page UI and functionality', () => {
             .should('have.css', 'color', homeData.iconColor)
             .and('have.css', 'background-color', homeData.iconBackgroundColor);
     })
+
+    it('TC_01.01.4 | Verify that each link has icon with color rgb(1, 160, 224) and background-color rgb(238, 238, 238)', () => {
+        homePage.getLinkIconList().each($el => {
+            cy.wrap($el)
+                .should('have.css', 'color', homeData.iconColor)
+                .and('have.css', 'background-color', homeData.iconBackgroundColor);
+
+        })
+    })
+
 });
