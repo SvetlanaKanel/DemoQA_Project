@@ -1,3 +1,6 @@
+import ElementsPage from "./ElementsPage";
+import FormsPage from "./FormsPage";
+
 class HomePage {
     //elements
     getElements = () => cy.get('.category-cards >div:nth-child(1) h5');
@@ -8,6 +11,12 @@ class HomePage {
     // methods
     clickElements(){
         this.getElements().click();
+        return ElementsPage;
+    }
+
+    clickForms() {
+        this.getForms().click();
+        return FormsPage;
     }
 
 

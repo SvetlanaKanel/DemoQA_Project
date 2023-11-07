@@ -3,9 +3,12 @@ import HomePage from "../../pageObjects/HomePage";
 import homeData from "../../fixtures/homeData.json";
 import ElementsPage from "../../pageObjects/ElementsPage";
 import elementsData from "../../fixtures/elementsData.json";
+import FormsPage from "../../pageObjects/FormsPage";
+import formData from "../../fixtures/formsData.json";
 
 const homePage = new HomePage();
 const elementsPage = new ElementsPage();
+const formsPage = new FormsPage();
 
 describe('Home page UI and functionality', () => {
 
@@ -21,7 +24,7 @@ describe('Home page UI and functionality', () => {
     it('TC_01.01.02 | Click on Elements link and verify that it redirects to Elements page', () => {
         homePage.clickElements();
 
-        cy.url().should('be.eq', 'https://demoqa.com/elements');
+        cy.url().should('be.eq', elementsData.url);
         elementsPage.getMainHeader().should('have.text', elementsData.mainHeader);
     })
 
@@ -31,13 +34,26 @@ describe('Home page UI and functionality', () => {
             .and('have.css', 'background-color', homeData.iconBackgroundColor);
     })
 
-    it('TC_01.01.4 | Verify that each link has icon with color rgb(1, 160, 224) and background-color rgb(238, 238, 238)', () => {
+    it('TC_01.01.04 | Verify that each link has icon with color rgb(1, 160, 224) and background-color rgb(238, 238, 238)', () => {
         homePage.getLinkIconList().each($el => {
             cy.wrap($el)
                 .should('have.css', 'color', homeData.iconColor)
                 .and('have.css', 'background-color', homeData.iconBackgroundColor);
-
         })
+    })
+
+    it('TC_01.02.01 | Verify that Forms link is visible and has text "Forms"', () => {
+        homePage.getForms()
+            .should('be.visible')
+            .and('have.text', homeData.linkPageName[1])
+    })
+
+    it('TC_01.02.02 | Click on Forms link and verify that it redirects to Forms page with main header "Forms" and url https://demoqa.com/forms ', () => {
+        homePage.clickForms();
+
+        cy.url().should('be.eq', formData.url);
+        formsPage.getMainHeader()
+            .should('have.text', formData.mainHeader);
     })
 
 });
