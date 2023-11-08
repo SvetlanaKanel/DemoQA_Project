@@ -55,17 +55,19 @@ describe('Home page UI and functionality', () => {
         homePage.clickForms();
 
         cy.url().should('be.eq', formData.url);
-        formsPage.getMainHeader()
-            .should('have.text', formData.mainHeader);
+        formsPage.getMainHeader().should('have.text', formData.mainHeader);
     })
 
     it('TC_01.03.01 | Alerts, Frame & Windows link is visible and has text "Alerts, Frame & Windows"', () => {
-        homePage.getAlerts().should('be.visible')
-        .and('have.text', homeData.linkPageName[2]);
+        homePage.getAlerts()
+            .should('be.visible')
+            .and('have.text', homeData.linkPageName[2]);
     })
 
     it('TC_01.03.02 | Click on Alerts, Frame & Windows link and verify that it redirects to Alerts, Frame & Windows page', () => {
-        homePage.clickAlerts()
+        homePage.clickAlerts();
+
+        cy.url().should('be.eq', alertsData.url);
         alertsPage.getMainHeader().should('have.text', alertsData.mainHeader);
     })
 
