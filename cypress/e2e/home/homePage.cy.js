@@ -5,10 +5,13 @@ import ElementsPage from "../../pageObjects/ElementsPage";
 import elementsData from "../../fixtures/elementsData.json";
 import FormsPage from "../../pageObjects/FormsPage";
 import formData from "../../fixtures/formsData.json";
+import AlertPage from "../../pageObjects/AlertsPage";
+import alertsData from "../../fixtures/alertsData.json";
 
 const homePage = new HomePage();
 const elementsPage = new ElementsPage();
 const formsPage = new FormsPage();
+const alertsPage = new AlertPage();
 
 describe('Home page UI and functionality', () => {
 
@@ -54,6 +57,16 @@ describe('Home page UI and functionality', () => {
         cy.url().should('be.eq', formData.url);
         formsPage.getMainHeader()
             .should('have.text', formData.mainHeader);
+    })
+
+    it('TC_01.03.01 | Alerts, Frame & Windows link is visible and has text "Alerts, Frame & Windows"', () => {
+        homePage.getAlerts().should('be.visible')
+        .and('have.text', homeData.linkPageName[2]);
+    })
+
+    it('TC_01.03.02 | Click on Alerts, Frame & Windows link and verify that it redirects to Alerts, Frame & Windows page', () => {
+        homePage.clickAlerts()
+        alertsPage.getMainHeader().should('have.text', alertsData.mainHeader);
     })
 
 });

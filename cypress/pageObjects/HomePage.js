@@ -7,6 +7,10 @@ class HomePage {
     getElementsIcon = () => cy.get('.category-cards > div:nth-child(1) .avatar'); 
     getLinkIconList = (idx) => cy.get('.avatar');
     getForms = () => cy.get('.category-cards >div:nth-child(2) h5');
+    getAlerts = () => cy.get('.category-cards >div:nth-child(3) h5');
+    getWidgets = () => cy.get('.category-cards >div:nth-child(4) h5');
+    getInteractions = () => cy.get('.category-cards >div:nth-child(5) h5');
+    getBook = () => cy.get('.category-cards >div:nth-child(6) h5');
 
     // methods
     clickElements(){
@@ -15,8 +19,13 @@ class HomePage {
     }
 
     clickForms() {
-        this.getForms().click();
+        this.getAlerts().click();
         return FormsPage;
+    }
+
+    clickAlerts() {
+        this.getAlerts().click();
+        return 
     }
 
 
