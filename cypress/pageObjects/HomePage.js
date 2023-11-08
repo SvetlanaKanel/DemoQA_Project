@@ -19,7 +19,7 @@ class HomePage {
     }
 
     clickForms() {
-        this.getAlerts().click();
+        this.getForms().click();
         return FormsPage;
     }
 
