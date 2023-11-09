@@ -7,11 +7,14 @@ import FormsPage from "../../pageObjects/FormsPage";
 import formData from "../../fixtures/formsData.json";
 import AlertPage from "../../pageObjects/AlertsPage";
 import alertsData from "../../fixtures/alertsData.json";
+import WidgetsPage from "../../pageObjects/WidgetsPage";
+import widgetsData from "../../fixtures/widgetsData.json"
 
 const homePage = new HomePage();
 const elementsPage = new ElementsPage();
 const formsPage = new FormsPage();
 const alertsPage = new AlertPage();
+const widgetsPage = new WidgetsPage();
 
 describe('Home page UI and functionality', () => {
 
@@ -71,4 +74,17 @@ describe('Home page UI and functionality', () => {
         alertsPage.getMainHeader().should('have.text', alertsData.mainHeader);
     })
 
+    it('TC_01.04.01 | Widgets link is visible and has text "Widgets"', () => {
+        homePage.getWidgets()
+            .should('be.visible')
+            .and('have.text', homeData.linkPageName[3]);
+    })
+
+    it('TC_01.04.02 | Click on Widgets link and verify that it redirects to Widgets page', () => {
+        homePage.clickWidgets();
+
+        cy.url().should('be.eq', widgetsData.url);
+        alertsPage.getMainHeader().should('have.text', widgetsData.mainHeader);
+
+    });
 });
