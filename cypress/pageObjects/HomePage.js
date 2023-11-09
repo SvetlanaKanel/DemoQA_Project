@@ -28,6 +28,11 @@ class HomePage {
         return 
     }
 
+    clickWidgets() {
+        this.getWidgets().click();
+        return
+    }
+
 
 }
 export default HomePage
